@@ -6,8 +6,9 @@
  */
 
 import React from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, Text, useColorScheme, View } from 'react-native';
 import AppNavigator from './src/navigation/AppNavigator';
+import './global.css';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
