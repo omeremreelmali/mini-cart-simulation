@@ -99,7 +99,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onPress }) => {
           </View>
         </View>
 
-        <AddToCartButton productId={product.id} />
+        <AddToCartButton product={product} />
       </View>
     </TouchableOpacity>
   );

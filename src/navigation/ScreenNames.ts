@@ -1,6 +1,7 @@
 export const PublicRoutes = {
   Home: 'Home',
   Products: 'Products',
+  ProductDetail: 'ProductDetail',
   Cart: 'Cart',
 } as const;
 

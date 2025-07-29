@@ -1,8 +1,10 @@
 import { PublicRoutes, TabRoutes } from './ScreenNames';
+import { NavigatorScreenParams } from '@react-navigation/native';
 
 export type RootStackParamList = {
-  [PublicRoutes.Home]: undefined;
+  [PublicRoutes.Home]: NavigatorScreenParams<TabParamList> | undefined;
   [PublicRoutes.Products]: undefined;
+  [PublicRoutes.ProductDetail]: { productId: number };
   [PublicRoutes.Cart]: undefined;
 };
 

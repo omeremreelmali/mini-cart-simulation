@@ -7,9 +7,15 @@ import {
   RefreshControl,
   StyleSheet,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Product } from '../model/product.types';
 import { wp } from '../../../helpers/screen';
 import ProductCard from '../components/ProductCard';
+import { RootStackParamList } from '../../../navigation/types';
+import { PublicRoutes } from '../../../navigation/ScreenNames';
+
+type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
 interface ProductListSectionProps {
   products: Product[];
@@ -28,8 +34,14 @@ const ProductListSection: React.FC<ProductListSectionProps> = ({
   onLoadMore,
   hasMore,
 }) => {
+  const navigation = useNavigation<NavigationProp>();
+
+  const handleProductPress = (productId: number) => {
+    navigation.navigate(PublicRoutes.ProductDetail, { productId });
+  };
+
   const renderProduct = ({ item }: { item: Product }) => (
-    <ProductCard product={item} />
+    <ProductCard product={item} onPress={() => handleProductPress(item.id)} />
   );
 
   const renderFooter = () => {
