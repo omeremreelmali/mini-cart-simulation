@@ -2,10 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import ProductsScreen from '../features/products/screens/ProductsScreen';
+import ProductsScreen from '../features/products/screens/ProductsListScreen';
 import CartScreen from '../features/cart/screens/CartScreen';
 import { RootStackParamList } from './types';
 import TabNavigator from './TabNavigator';
+import { PublicRoutes } from './ScreenNames';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,17 +25,17 @@ const AppNavigator = () => {
         }}
       >
         <Stack.Screen
-          name="Home"
+          name={PublicRoutes.Home}
           component={TabNavigator}
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Products"
+          name={PublicRoutes.Products}
           component={ProductsScreen}
           options={{ title: 'Ürünler' }}
         />
         <Stack.Screen
-          name="Cart"
+          name={PublicRoutes.Cart}
           component={CartScreen}
           options={{ title: 'Sepetim' }}
         />

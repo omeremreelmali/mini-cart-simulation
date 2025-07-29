@@ -25,7 +25,7 @@ const initialState: ProductState = {
   productError: null,
   pagination: {
     total: 0,
-    skip: 0,
+    skip: 1,
     limit: 20,
   },
 };
@@ -71,7 +71,11 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.productsLoading = false;
-        state.products = action.payload.products;
+        if (action.payload.skip > 1) {
+          state.products = [...state.products, ...action.payload.products];
+        } else {
+          state.products = action.payload.products;
+        }
         state.pagination = {
           total: action.payload.total,
           skip: action.payload.skip,

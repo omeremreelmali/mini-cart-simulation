@@ -1,7 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TabParamList } from './types';
+import { TabRoutes } from './ScreenNames';
 import HomeScreen from '../features/home/screens/HomeScreen';
-import ProductsScreen from '../features/products/screens/ProductsScreen';
+import ProductsScreen from '../features/products/screens/ProductsListScreen';
 import CartScreen from '../features/cart/screens/CartScreen';
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -24,7 +25,7 @@ export default function TabNavigator() {
       }}
     >
       <Tab.Screen
-        name="HomeTab"
+        name={TabRoutes.HomeTab}
         component={HomeScreen}
         options={{
           tabBarLabel: 'Ana Sayfa',
@@ -32,7 +33,7 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="ProductsTab"
+        name={TabRoutes.ProductsTab}
         component={ProductsScreen}
         options={{
           tabBarLabel: 'Ürünler',
@@ -40,7 +41,7 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
-        name="CartTab"
+        name={TabRoutes.CartTab}
         component={CartScreen}
         options={{
           tabBarLabel: 'Sepet',

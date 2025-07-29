@@ -10,9 +10,8 @@ export interface ProductsQueryParams {
 class ProductService {
   async getProducts(params?: ProductsQueryParams): Promise<ProductsListResponse> {
     const url = API_ENDPOINTS.PRODUCTS.GET_PRODUCTS(params ? `limit=${params.limit}&skip=${params.skip}` : '');
-    const response = await httpClient.get<ProductsListResponse>(url, { 
-      params 
-    });
+    const response = await httpClient.get<ProductsListResponse>(url);
+    console.log('response', response.data);
     return response.data;
   }
 

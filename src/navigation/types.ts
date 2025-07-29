@@ -1,11 +1,13 @@
+import { PublicRoutes, TabRoutes } from './ScreenNames';
+
 export type RootStackParamList = {
-  Home: undefined;
-  Products: undefined;
-  Cart: undefined;
+  [PublicRoutes.Home]: undefined;
+  [PublicRoutes.Products]: undefined;
+  [PublicRoutes.Cart]: undefined;
 };
 
 export type TabParamList = {
-  HomeTab: undefined;
-  ProductsTab: undefined;
-  CartTab: undefined;
+  [TabRoutes.HomeTab]: undefined;
+  [TabRoutes.ProductsTab]: undefined;
+  [TabRoutes.CartTab]: undefined;
 }; 
