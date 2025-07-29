@@ -15,15 +15,15 @@ class HttpClient {
     });
   }
 
-  public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosInstance.get(url, config);
   }
 
-  public async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosInstance.post(url, data, config);
   }
 
-  public async postMultipart<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async postMultipart<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     const multipartConfig = {
       ...config,
       headers: {
@@ -36,11 +36,11 @@ class HttpClient {
     return this.axiosInstance.post(url, data, multipartConfig);
   }
 
-  public async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosInstance.put(url, data, config);
   }
 
-  public async putMultipart<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async putMultipart<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     const multipartConfig = {
       ...config,
       headers: {
@@ -52,11 +52,11 @@ class HttpClient {
     return this.axiosInstance.put(url, data, multipartConfig);
   }
 
-  public async patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T> {
+  public async patch<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosInstance.patch(url, data, config);
   }
 
-  public async delete<T>(url: string, config?: AxiosRequestConfig): Promise<T> {
+  public async delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return this.axiosInstance.delete(url, config);
   }
 }
