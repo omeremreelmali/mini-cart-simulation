@@ -48,7 +48,7 @@ Veya Android Studio / XCode üzerinden de çalıştırabilirsiniz.
 
 1. Ana Sayfa - Hoşgeldiniz Sayfası
 2. Ürün Detayı - Ürün bilgileri ve sepete ekleme
-3. Ürün Liste - Sepetteki ürünler ve toplam tutar
+3. Ürün Liste - Ürün listesi ve sepete ekleme
 4. Sepet - Sepetteki ürünler ve toplam tutar
 
 ## Kullanılan Teknolojiler
