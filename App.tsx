@@ -5,20 +5,48 @@
  * @format
  */
 
-import React from 'react';
-import { StatusBar, Text, useColorScheme, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
 import AppNavigator from './src/navigation/AppNavigator';
+import LoadingOverlay from './src/components/LoadingOverlay';
+import { useApp } from './src/store/hooks';
 import './global.css';
+import Toast from 'react-native-toast-message';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const AppContent = () => {
+  const { isLoading, error, clearError } = useApp();
+
+  useEffect(() => {
+    if (error) {
+      Toast.show({
+        type: 'error',
+        text1: 'Hata',
+        text2: error,
+        visibilityTime: 2000,
+        autoHide: true,
+        onHide: () => {
+          clearError();
+        },
+      });
+    }
+  }, [error, clearError]);
 
   return (
-    <Provider store={store}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+    <>
+      <StatusBar barStyle={'light-content'} />
       <AppNavigator />
+      <LoadingOverlay visible={isLoading} />
+      <Toast />
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Provider store={store}>
+      <AppContent />
     </Provider>
   );
 }

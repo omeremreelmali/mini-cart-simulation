@@ -1,7 +1,9 @@
 
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import { BASE_URL } from '../config/endpoints';
-
+import { store } from '../store/store';
+import { startRequest, finishRequest } from '../store/slices/appSlice';
+import { handleHttpError } from './errorHandler';
 
 class HttpClient {
   private axiosInstance: AxiosInstance;
@@ -13,6 +15,21 @@ class HttpClient {
         'Content-Type': 'application/json',
       },
     });
+
+    this.axiosInstance.interceptors.request.use((config) => {
+      store.dispatch(startRequest());
+      return config;
+    });
+
+    this.axiosInstance.interceptors.response.use(
+      (response) => {
+        setTimeout(() => {
+          store.dispatch(finishRequest());
+        }, 500);
+        return response;
+      },
+      handleHttpError,
+    );
   }
 
   public async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {

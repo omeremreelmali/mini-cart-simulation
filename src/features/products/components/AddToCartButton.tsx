@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Product } from '../model/product.types';
 import { useCart } from '../../cart/hooks/useCart';
+import Toast from 'react-native-toast-message';
 
 interface AddToCartButtonProps {
   product: Product;
@@ -16,6 +17,13 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
 
   const handleAddToCart = () => {
     addToCart(product);
+    Toast.show({
+      type: 'success',
+      text1: 'Ürün sepete eklendi',
+      topOffset: 50,
+      autoHide: true,
+      visibilityTime: 2000,
+    });
   };
 
   const handleIncrement = () => {
@@ -25,6 +33,13 @@ const AddToCartButton: React.FC<AddToCartButtonProps> = ({ product }) => {
   const handleDecrement = () => {
     if (quantity <= 1) {
       removeFromCart(product.id);
+      Toast.show({
+        type: 'error',
+        text1: 'Ürün sepetten çıkarıldı',
+        topOffset: 50,
+        autoHide: true,
+        visibilityTime: 2000,
+      });
     } else {
       updateQuantity(product.id, quantity - 1);
     }
