@@ -8,7 +8,7 @@ const initialState: CartState = {
   totalPrice: 0,
 };
 
-const calculateTotals = (items: CartItem[]) => {
+export const calculateTotals = (items: CartItem[]) => {
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + item.totalPrice, 0);
   return { totalItems, totalPrice };
